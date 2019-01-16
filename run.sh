@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
 
-# Check args
-if [ "$#" -ne 1 ]; then
-  echo "usage: ./run.sh IMAGE_NAME"
-  return 1
-fi
+IMAGE_NAME=ros-melodic
 
 # Get this script's path
 pushd `dirname $0` > /dev/null
@@ -21,4 +17,4 @@ docker run\
   -e DOCKER=1\
   -v "$HOME:$HOME:rw"\
   -v "/tmp/.X11-unix:/tmp/.X11-unix:rw"\
-  -it $1 $SHELL
+  -it $IMAGE_NAME $SHELL
