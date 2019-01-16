@@ -8,11 +8,17 @@ ARG workspace
 ARG shell
 
 # Basic Utilities
-RUN apt-get -y update && apt-get install -y zsh screen tree sudo ssh synaptic
+RUN apt-get -y update && apt-get install -y zsh screen tmux tree sudo ssh synaptic htop vim tig ipython ipython3 less
 
 # Additional development tools
-RUN apt-get install -y x11-apps python-pip build-essential
-RUN pip install catkin_tools
+RUN apt-get install -y x11-apps python-pip python3-pip build-essential python-catkin-tools
+
+# Additional custom dependencies
+RUN apt-get install -y libncurses5-dev ros-melodic-control-msgs ros-melodic-controller-manager ros-melodic-effort-controllers ros-melodic-gazebo-dev ros-melodic-gazebo-msgs ros-melodic-gazebo-plugins ros-melodic-gazebo-ros ros-melodic-gazebo-ros-control ros-melodic-imu-complementary-filter ros-melodic-imu-sensor-controller ros-melodic-joint-state-controller ros-melodic-joint-trajectory-controller ros-melodic-joy ros-melodic-moveit-ros-control-interface ros-melodic-moveit-ros-move-group ros-melodic-moveit-ros-planning ros-melodic-moveit-ros-planning-interface ros-melodic-moveit-ros-robot-interaction ros-melodic-moveit-simple-controller-manager ros-melodic-navigation ros-melodic-pointcloud-to-laserscan ros-melodic-position-controllers ros-melodic-robot-controllers ros-melodic-robot-localization ros-melodic-ros-control ros-melodic-ros-controllers ros-melodic-rosbridge-server ros-melodic-rosdoc-lite ros-melodic-rqt-controller-manager ros-melodic-velocity-controllers uvcdynctrl
+
+# Python modules
+RUN pip install catkin_pkg PyYAML tensorflow opencv-python
+RUN pip3 install PyYAML
 
 # Make SSH available
 EXPOSE 22
