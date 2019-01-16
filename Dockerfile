@@ -20,9 +20,6 @@ RUN apt-get install -y libncurses5-dev ros-melodic-control-msgs ros-melodic-cont
 RUN pip install catkin_pkg PyYAML tensorflow opencv-python
 RUN pip3 install PyYAML
 
-# Make SSH available
-EXPOSE 22
-
 # Mount the user's home directory
 VOLUME "${home}"
 
