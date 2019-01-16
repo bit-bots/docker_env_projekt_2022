@@ -1,11 +1,7 @@
 #!/usr/bin/env bash
 
 IMAGE_NAME=ros-melodic
-
-# Get this script's path
-pushd `dirname $0` > /dev/null
-SCRIPTPATH=`pwd`
-popd > /dev/null
+DIRNAME=`dirname $0`
 
 # Build the docker image
 docker build\
@@ -14,4 +10,4 @@ docker build\
   --build-arg home=$HOME\
   --build-arg workspace=$SCRIPTPATH\
   --build-arg shell=$SHELL\
-  -t $IMAGE_NAME .
+  -t $IMAGE_NAME $DIRNAME
