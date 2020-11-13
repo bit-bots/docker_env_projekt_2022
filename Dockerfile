@@ -11,7 +11,10 @@ ARG shell
 RUN apt-get -y update && apt-get install -y apt-utils && apt-get -y upgrade && apt-get install -y zsh screen tmux tree sudo ssh synaptic htop vim tig ipython ipython3 less ranger gdb iproute2 iputils-ping vlc beignet wget gnupg2 locales
 
 # Setup locale
-RUN echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen && locale-gen
+RUN echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen && locale-gen && update-locale LANG=en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
 
 # Setup packages.bit-bots.de apt source
 RUN wget http://packages.bit-bots.de/key.asc -O- | apt-key add -
