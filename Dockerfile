@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ros:foxy
 
 # Arguments
 ARG user
@@ -8,18 +8,7 @@ ARG workspace
 ARG shell
 
 # Basic Utilities
-RUN apt-get -y update && apt-get install -y apt-utils && apt-get -y upgrade && apt-get install -y zsh screen tmux tree sudo ssh synaptic htop vim tig ipython ipython3 less ranger gdb iproute2 iputils-ping vlc beignet wget gnupg2 locales
-
-# Setup locale
-RUN echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen && locale-gen && update-locale LANG=en_US.UTF-8
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
-
-# Setup packages.bit-bots.de apt source
-RUN wget https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -O- | apt-key add -
-RUN echo "deb [arch=amd64] http://packages.ros.org/ros2/ubuntu focal main" > /etc/apt/sources.list.d/ros2.list
-RUN apt-get update
+RUN apt-get -y update && apt-get install -y apt-utils && apt-get -y upgrade && apt-get install -y zsh screen tmux tree sudo ssh synaptic htop vim tig ipython3 less ranger gdb iproute2 iputils-ping vlc wget gnupg2 locales
 
 # Additional development tools
 RUN apt-get install -y x11-apps python3-pip build-essential
