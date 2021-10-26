@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 # Arguments
 ARG user
@@ -17,8 +17,8 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
 # Setup packages.bit-bots.de apt source
-RUN wget http://packages.bit-bots.de/key.asc -O- | apt-key add -
-RUN echo "deb http://packages.bit-bots.de bionic main" > /etc/apt/sources.list.d/ros.list
+RUN wget https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -O- | apt-key add -
+RUN echo "deb [arch=amd64] http://packages.ros.org/ros2/ubuntu focal main" > /etc/apt/sources.list.d/ros2.list
 RUN apt-get update
 
 # Additional development tools
