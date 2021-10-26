@@ -75,8 +75,7 @@ VOLUME "${home}"
 RUN \
   echo "${user}:x:${uid}:${uid}:${user},,,:${home}:${shell}" >> /etc/passwd && \
   echo "${user}:x:${uid}:" >> /etc/group && \
-  echo "${user} ALL=(ALL) NOPASSWD: ALL" > "/etc/sudoers.d/${user}" && \
-  chmod 0440 "/etc/sudoers.d/${user}"
+  echo "${user} ALL=(ALL) NOPASSWD: ALL" >> "/etc/sudoers"
 
 # Switch to user
 USER "${user}"
