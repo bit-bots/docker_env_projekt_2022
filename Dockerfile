@@ -74,6 +74,7 @@ VOLUME "${home}"
 # Clone user into docker image and set up X11 sharing
 RUN \
   echo "${user}:x:${uid}:${uid}:${user},,,:${home}:${shell}" >> /etc/passwd && \
+  echo "${user}:*::0:99999:0:::" >> /etc/shadow && \
   echo "${user}:x:${uid}:" >> /etc/group && \
   echo "${user} ALL=(ALL) NOPASSWD: ALL" >> "/etc/sudoers"
 
