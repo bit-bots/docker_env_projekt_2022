@@ -62,7 +62,6 @@ RUN apt-get install -y \
   ros-foxy-moveit-ros-robot-interaction \
   ros-foxy-moveit-simple-controller-manager \
   ros-foxy-navigation2 \
-  ros-foxy-pointcloud-to-laserscan \
   ros-foxy-position-controllers \
   ros-foxy-robot-controllers \
   ros-foxy-robot-localization \
