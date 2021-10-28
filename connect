@@ -15,5 +15,5 @@ CONTAINER_NAME=`docker ps --filter status=running --filter ancestor=$IMAGE_NAME 
 if [[ -z $@ ]]; then
 	docker exec -it $CONTAINER_NAME $SHELL
 else
-	docker exec -t $CONTAINER_NAME "$@"
+	docker exec -it $CONTAINER_NAME "$@"
 fi
