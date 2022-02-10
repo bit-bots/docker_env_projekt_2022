@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-IMAGE_NAME=ros-foxy
+IMAGE_NAME=ros-rolling
 CONTAINER_NAME=`docker ps --filter status=running --filter ancestor=$IMAGE_NAME --format "{{.Names}}"`
 
 if [[ -z $CONTAINER_NAME ]]; then

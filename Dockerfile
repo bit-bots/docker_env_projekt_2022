@@ -1,4 +1,4 @@
-FROM ros:foxy
+FROM ros:rolling
 
 # Arguments
 ARG user
@@ -42,40 +42,42 @@ RUN apt-get -y update \
     zsh
 
 # Setup locale
-RUN echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen && locale-gen && update-locale LANG=en_US.UTF-8
+RUN echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen \
+  && locale-gen \
+  && update-locale LANG=en_US.UTF-8 \
+  && ln -s /usr/bin/python3 /usr/bin/python
+
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
 # Additional custom dependencies
 RUN apt-get install -y \
-  ros-foxy-desktop \
-  ros-foxy-control-msgs \
-  ros-foxy-controller-manager \
-  ros-foxy-effort-controllers \
-  ros-foxy-joint-state-controller \
-  ros-foxy-joint-trajectory-controller \
-  ros-foxy-joy \
-  ros-foxy-moveit-ros-move-group \
-  ros-foxy-moveit-ros-planning \
-  ros-foxy-moveit-ros-planning-interface \
-  ros-foxy-moveit-ros-robot-interaction \
-  ros-foxy-moveit-simple-controller-manager \
-  ros-foxy-navigation2 \
-  ros-foxy-position-controllers \
-  ros-foxy-robot-controllers \
-  ros-foxy-robot-localization \
-  ros-foxy-velocity-controllers
+  ros-rolling-desktop \
+  ros-rolling-control-msgs \
+  ros-rolling-controller-manager \
+  ros-rolling-effort-controllers \
+  ros-rolling-joint-state-broadcaster \
+  ros-rolling-joint-trajectory-controller \
+  ros-rolling-joy \
+  ros-rolling-moveit-ros-move-group \
+  ros-rolling-moveit-ros-planning \
+  ros-rolling-moveit-ros-planning-interface \
+  ros-rolling-moveit-ros-robot-interaction \
+  ros-rolling-moveit-simple-controller-manager \
+  ros-rolling-position-controllers \
+  ros-rolling-robot-localization \
+  ros-rolling-velocity-controllers
 
 # Mount the user's home directory
 VOLUME "${home}"
 
 # Clone user into docker image and set up X11 sharing
 RUN \
-  echo "${user}:x:${uid}:${uid}:${user},,,:${home}:${shell}" >> /etc/passwd && \
-  echo "${user}:*::0:99999:0:::" >> /etc/shadow && \
-  echo "${user}:x:${uid}:" >> /etc/group && \
-  echo "${user} ALL=(ALL) NOPASSWD: ALL" >> "/etc/sudoers"
+  echo "${user}:x:${uid}:${uid}:${user},,,:${home}:${shell}" >> /etc/passwd \
+  && echo "${user}:*::0:99999:0:::" >> /etc/shadow \
+  && echo "${user}:x:${uid}:" >> /etc/group \
+  && echo "${user} ALL=(ALL) NOPASSWD: ALL" >> "/etc/sudoers"
 
 # Switch to user
 USER "${user}"
