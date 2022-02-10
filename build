@@ -4,11 +4,13 @@ IMAGE_NAME=ros-rolling
 DIRNAME=`dirname $0`
 
 # Build the docker image
-docker build\
-  --network=host\
-  --build-arg user=$USER\
-  --build-arg uid=$UID\
-  --build-arg home=$HOME\
-  --build-arg workspace=$HOME\
-  --build-arg shell=$SHELL\
-  -t $IMAGE_NAME $DIRNAME
+docker build \
+  --pull \
+  --network=host \
+  --build-arg user=$USER \
+  --build-arg uid=$UID \
+  --build-arg home=$HOME \
+  --build-arg workspace=$HOME \
+  --build-arg shell=$SHELL \
+  -t $IMAGE_NAME $DIRNAME \
+  $@
