@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -e
+set -eEou pipefail
 
 IMAGE_NAME=ros-rolling
 CONTAINER_NAME=`docker ps --filter status=running --filter ancestor=$IMAGE_NAME --format "{{.Names}}"`

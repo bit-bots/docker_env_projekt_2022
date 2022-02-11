@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -eEou pipefail
 
 IMAGE_NAME=ros-rolling
 DIRNAME=`dirname $0`
