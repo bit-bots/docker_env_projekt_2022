@@ -53,13 +53,20 @@ ENV LC_ALL en_US.UTF-8
 
 # Additional custom dependencies
 RUN apt-get install -y \
+  libfmt-dev \
+  librange-v3-dev \
+  liburdfdom-dev \
+  python3-colcon-common-extensions \
+  ros-rolling-backward-ros \
   ros-rolling-desktop \
   ros-rolling-control-msgs \
+  ros-rolling-control-toolbox \
   ros-rolling-controller-manager \
   ros-rolling-effort-controllers \
   ros-rolling-joint-state-broadcaster \
   ros-rolling-joint-trajectory-controller \
   ros-rolling-joy \
+  ros-rolling-moveit-ros \
   ros-rolling-moveit-ros-move-group \
   ros-rolling-moveit-ros-planning \
   ros-rolling-moveit-ros-planning-interface \
@@ -67,7 +74,8 @@ RUN apt-get install -y \
   ros-rolling-moveit-simple-controller-manager \
   ros-rolling-position-controllers \
   ros-rolling-robot-localization \
-  ros-rolling-velocity-controllers
+  ros-rolling-velocity-controllers \
+  ros-rolling-xacro
 
 # Mount the user's home directory
 VOLUME "${home}"
