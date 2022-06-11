@@ -53,29 +53,52 @@ ENV LC_ALL en_US.UTF-8
 
 # Additional custom dependencies
 RUN apt-get install -y \
-  libfmt-dev \
-  librange-v3-dev \
-  liburdfdom-dev \
-  python3-colcon-common-extensions \
   ros-rolling-backward-ros \
-  ros-rolling-desktop \
+  ros-rolling-behaviortree-cpp-v3 \
+  ros-rolling-bondcpp \
+  ros-rolling-camera-info-manager \
   ros-rolling-control-msgs \
   ros-rolling-control-toolbox \
+  ros-rolling-controller-interface \
   ros-rolling-controller-manager \
+  ros-rolling-desktop \
+  ros-rolling-diagnostic-aggregator \
+  ros-rolling-diagnostic-updater \
   ros-rolling-effort-controllers \
+  ros-rolling-gazebo-msgs \
+  ros-rolling-image-proc \
   ros-rolling-joint-state-broadcaster \
+  ros-rolling-joint-state-publisher-gui \
   ros-rolling-joint-trajectory-controller \
   ros-rolling-joy \
+  ros-rolling-joy-linux \
+  ros-rolling-moveit-core \
+  ros-rolling-moveit-planners-ompl \
   ros-rolling-moveit-ros \
   ros-rolling-moveit-ros-move-group \
   ros-rolling-moveit-ros-planning \
   ros-rolling-moveit-ros-planning-interface \
   ros-rolling-moveit-ros-robot-interaction \
   ros-rolling-moveit-simple-controller-manager \
+  ros-rolling-plotjuggler-ros \
   ros-rolling-position-controllers \
   ros-rolling-robot-localization \
+  ros-rolling-soccer-vision-2d-msgs \
+  ros-rolling-soccer-vision-3d-msgs \
+  ros-rolling-test-msgs \
+  ros-rolling-tf-transformations \
+  ros-rolling-transmission-interface \
   ros-rolling-velocity-controllers \
-  ros-rolling-xacro
+  ros-rolling-xacro \
+  libfmt-dev \
+  librange-v3-dev \
+  librostest-dev \
+  libtf-conversions-dev \
+  liburdfdom-dev \
+  libyaml-cpp-dev \
+  python3-colcon-common-extensions \
+  python3-pybind11 \
+  python3-rosdep
 
 # Mount the user's home directory
 VOLUME "${home}"
