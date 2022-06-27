@@ -89,6 +89,7 @@ RUN apt-get install -y \
   ros-rolling-tf-transformations \
   ros-rolling-transmission-interface \
   ros-rolling-velocity-controllers \
+  ros-rolling-vision-msgs \
   ros-rolling-xacro \
   libfmt-dev \
   librange-v3-dev \
@@ -98,7 +99,9 @@ RUN apt-get install -y \
   libyaml-cpp-dev \
   python3-colcon-common-extensions \
   python3-pybind11 \
-  python3-rosdep
+  python3-rosdep \
+  && pip3 install pip -U \
+  && python3 -m pip install git+https://github.com/ruffsl/colcon-clean
 
 # Mount the user's home directory
 VOLUME "${home}"
