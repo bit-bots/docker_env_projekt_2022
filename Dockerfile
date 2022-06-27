@@ -51,6 +51,21 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
+# Setuo packages.bit-bots.de repository
+RUN mkdir -p /usr/local/share/keyrings \
+  && wget https://packages.bit-bots.de/key.asc -O /usr/local/share/keyrings/bitbots.key \
+  && echo 'deb [signed-by=/usr/local/share/keyrings/bitbots.key arch=amd64] https://packages.bit-bots.de jammy main' | sudo tee /etc/apt/sources.list.d/bitbots.list \
+  && apt update \
+  && apt upgrade -y
+
+# Prioritize packages.bit-bots.de
+RUN touch /etc/apt/preferences.d/package-bit-bots.pref \
+  && echo 'Package: *' >> /etc/apt/preferences.d/package-bit-bots.pref \
+  && echo 'Pin: origin "packages.bit-bots.de"' >> /etc/apt/preferences.d/package-bit-bots.pref \
+  && echo 'Pin-Priority: 1000' >> /etc/apt/preferences.d/package-bit-bots.pref \
+  && apt update \
+  && apt upgrade -y
+
 # Additional custom dependencies
 RUN apt-get install -y \
   ros-rolling-backward-ros \
