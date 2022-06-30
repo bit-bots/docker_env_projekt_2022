@@ -98,6 +98,7 @@ RUN apt-get install -y \
   ros-rolling-plotjuggler-ros \
   ros-rolling-position-controllers \
   ros-rolling-robot-localization \
+  ros-rolling-rot-conv \
   ros-rolling-soccer-vision-2d-msgs \
   ros-rolling-soccer-vision-3d-msgs \
   ros-rolling-test-msgs \
