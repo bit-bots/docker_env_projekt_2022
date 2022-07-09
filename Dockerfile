@@ -67,6 +67,7 @@ RUN echo 'Package: *' >> /etc/apt/preferences.d/package-bit-bots.pref \
 
 # Additional custom dependencies
 RUN apt-get install -y \
+  ros-rolling-ament-cmake-nose \
   ros-rolling-backward-ros \
   ros-rolling-behaviortree-cpp-v3 \
   ros-rolling-bondcpp \
