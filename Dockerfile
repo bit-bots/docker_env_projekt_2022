@@ -94,6 +94,7 @@ RUN apt-get install -y \
   ros-rolling-moveit-ros-planning-interface \
   ros-rolling-moveit-ros-robot-interaction \
   ros-rolling-moveit-simple-controller-manager \
+  ros-rolling-nav2-bringup \
   ros-rolling-plotjuggler-ros \
   ros-rolling-position-controllers \
   ros-rolling-robot-localization \
