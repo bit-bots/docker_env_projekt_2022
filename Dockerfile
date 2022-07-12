@@ -117,6 +117,8 @@ RUN apt-get install -y \
   python3-colcon-common-extensions \
   python3-pybind11 \
   python3-rosdep \
+  python3-protobuf \
+  protobuf-compiler \
   && pip3 install pip -U \
   && python3 -m pip install git+https://github.com/ruffsl/colcon-clean
 
