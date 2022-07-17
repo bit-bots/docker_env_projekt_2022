@@ -102,6 +102,7 @@ RUN apt-get install -y \
   ros-rolling-rot-conv \
   ros-rolling-soccer-vision-2d-msgs \
   ros-rolling-soccer-vision-3d-msgs \
+  ros-rolling-soccer-vision-3d-rviz-markers \
   ros-rolling-test-msgs \
   ros-rolling-tf-transformations \
   ros-rolling-transmission-interface \
