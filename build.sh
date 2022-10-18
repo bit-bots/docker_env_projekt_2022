@@ -8,6 +8,7 @@ DIRNAME=`dirname $0`
 # Build the docker image
 $DOCKER_COMMAND build \
   --pull \
-  --network=host
+  --network=host \
+  --build-arg shell=$SHELL \
   -t $IMAGE_NAME $DIRNAME \
   $@

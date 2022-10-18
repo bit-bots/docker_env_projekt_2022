@@ -27,7 +27,6 @@ else
       -e SHELL \
       -e DISPLAY \
       -e DOCKER=1 \
-      -v "$HOME:$HOME:rw" \
       -v "/tmp/.X11-unix:/tmp/.X11-unix:rw" \
       --device=$VIDEO_DEVICE:/dev/video0 \
       --group-add=$VIDEO_GROUP \

@@ -1,10 +1,6 @@
 FROM ros:rolling
 
 # Arguments
-ARG user
-ARG uid
-ARG home
-ARG workspace
 ARG shell
 
 # Basic Utilities
@@ -22,6 +18,7 @@ RUN apt-get -y update \
     less \
     libncurses5-dev \
     locales \
+    micro \
     python3-numpy \
     python3-opencv \
     python3-pip \
@@ -67,6 +64,17 @@ RUN echo 'Package: *' >> /etc/apt/preferences.d/package-bit-bots.pref \
 
 # Additional custom dependencies
 RUN apt-get install -y --allow-downgrades \
+  libfmt-dev \
+  librange-v3-dev \
+  librostest-dev \
+  libtf-conversions-dev \
+  liburdfdom-dev \
+  libyaml-cpp-dev \
+  protobuf-compiler \
+  python3-colcon-common-extensions \
+  python3-protobuf \
+  python3-pybind11 \
+  python3-rosdep \
   ros-rolling-ament-cmake-nose \
   ros-rolling-backward-ros \
   ros-rolling-behaviortree-cpp-v3 \
@@ -109,35 +117,21 @@ RUN apt-get install -y --allow-downgrades \
   ros-rolling-velocity-controllers \
   ros-rolling-vision-msgs \
   ros-rolling-xacro \
-  libfmt-dev \
-  librange-v3-dev \
-  librostest-dev \
-  libtf-conversions-dev \
-  liburdfdom-dev \
-  libyaml-cpp-dev \
-  python3-colcon-common-extensions \
-  python3-pybind11 \
-  python3-rosdep \
-  python3-protobuf \
-  protobuf-compiler \
   && pip3 install pip -U \
   && python3 -m pip install git+https://github.com/ruffsl/colcon-clean
 
-RUN apt-get install -y --allow-downgrades
+COPY zshrc /root/.zshrc
 
-# Mount the user's home directory
-VOLUME "${home}"
-
-# Clone user into docker image and set up X11 sharing
-RUN \
-  echo "${user}:x:${uid}:${uid}:${user},,,:${home}:${shell}" >> /etc/passwd \
-  && echo "${user}:*::0:99999:0:::" >> /etc/shadow \
-  && echo "${user}:x:${uid}:" >> /etc/group \
-  && echo "${user} ALL=(ALL) NOPASSWD: ALL" >> "/etc/sudoers"
-
-# Switch to user
-USER "${user}"
 # This is required for sharing Xauthority
 ENV QT_X11_NO_MITSHM=1
 # Switch to the workspace
-WORKDIR ${workspace}
+WORKDIR /root/
+
+# Clone Bit-Bots Software
+RUN mkdir colcon_ws \
+  && cd colcon_ws \
+  && mkdir src \
+  && cd src \
+  && git clone https://github.com/bit-bots/bitbots_meta.git \
+  && cd bitbots_meta \
+  && make pull-init
