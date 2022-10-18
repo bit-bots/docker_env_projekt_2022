@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 set -eEou pipefail
 
-#DOCKER_COMMAND="podman --root=/export/scratch/podman --storage-opt mount_program=/usr/bin/fuse-overlayfs"
-DOCKER_COMMAND="docker"
+. settings.sh
 
-IMAGE_NAME=registry.bit-bots.de/ros-rolling-bitbots-projekt
 VIDEO_DEVICE=/dev/video0
 # Get the group number of the video group, docker groups may differ
 VIDEO_GROUP=`stat -c "%g" $VIDEO_DEVICE`

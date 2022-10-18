@@ -123,6 +123,8 @@ RUN apt-get install -y --allow-downgrades \
   && pip3 install pip -U \
   && python3 -m pip install git+https://github.com/ruffsl/colcon-clean
 
+RUN apt-get install -y --allow-downgrades
+
 # Mount the user's home directory
 VOLUME "${home}"
 

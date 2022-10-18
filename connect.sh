@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 set -eEou pipefail
 
-#DOCKER_COMMAND="podman --root=/export/scratch/podman --storage-opt mount_program=/usr/bin/fuse-overlayfs"
-DOCKER_COMMAND="docker"
-IMAGE_NAME=registry.bit-bots.de/ros-rolling-bitbots-projekt
+. settings.sh
 
 CONTAINER_NAME=`$DOCKER_COMMAND ps --filter status=running --filter ancestor=$IMAGE_NAME --format "{{.Names}}"`
 
