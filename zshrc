@@ -8,6 +8,7 @@ export PROMPT="%K{black} 🐋 %K{blue}%F{black}%/ %f%k%F{blue}%f "  # Pref
 export HISTFILE=$HOME/.zsh_history_docker
 
 source /opt/ros/rolling/setup.zsh &> /dev/null
+source $HOME/colcon_ws/install/setup.zsh &> /dev/null
 
 export PYTHONWARNINGS=ignore:::setuptools.command.install,ignore:::setuptools.command.easy_install,ignore:::pkg_resources
 eval "$(register-python-argcomplete3 ros2)"
