@@ -5,7 +5,7 @@ set -eEou pipefail
 
 VIDEO_DEVICE=/dev/video0
 # Get the group number of the video group, docker groups may differ
-VIDEO_GROUP=`stat -c "%g" $VIDEO_DEVICE`
+#VIDEO_GROUP=`stat -c "%g" $VIDEO_DEVICE`
 
 # Test whether a running container exists
 CONTAINER_NAME=`$DOCKER_COMMAND ps --filter status=running --filter ancestor=$IMAGE_NAME --format "{{.Names}}"`
@@ -28,8 +28,6 @@ else
       -e DISPLAY \
       -e DOCKER=1 \
       -v "/tmp/.X11-unix:/tmp/.X11-unix:rw" \
-      --device=$VIDEO_DEVICE:/dev/video0 \
-      --group-add=$VIDEO_GROUP \
       --cap-add=SYS_PTRACE \
       --security-opt seccomp=unconfined \
       --name "rosdocked_rolling_projekt_2022" \
