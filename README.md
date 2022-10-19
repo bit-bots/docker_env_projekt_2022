@@ -1,6 +1,6 @@
-## ROS Development Environment
+# ROS Development Environment
 
-# Run
+## Run
 
 To start and connect to a session run
 
@@ -8,9 +8,9 @@ To start and connect to a session run
 ./connect.sh
 ```
 
-# Access control
+## Access control
 
-To run gui disable xserver access control.
+To run gui applications disable xserver access control.
 
 ```bash
 xhost +
